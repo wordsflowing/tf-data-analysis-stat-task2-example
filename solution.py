@@ -12,7 +12,6 @@ def solution(p: float, x: np.array) -> tuple:
     # Измените код этой функции
     # Это будет вашим решением
     # Не меняйте название функции и её аргументы
-    x = [ -x for x in x]
     alpha = 1 - p
-    return (expon.ppf(alpha / 2, len(x)) - min(x) - 1/2) / (65**2 / 2), \
-           (expon.ppf(1 - alpha / 2, len(x)) - min(x) - 1/2) /(65**2 / 2)
+    return (gamma.ppf(alpha / 2, len(x)) + len(x)*np.mean(x) - len(x)/2) / (len(x)/2*65**2), \
+           (gamma.ppf(1 - alpha / 2, len(x)) + len(x)*np.mean(x) - len(x)/2) / (len(x)/2*65**2)
